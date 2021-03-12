@@ -1,6 +1,7 @@
 package com.chenpc.admin.Dao;
 
 import com.chenpc.admin.Bean.User;
+import com.chenpc.admin.exception.UserInfoException;
 
 import java.util.Locale;
 
@@ -18,6 +19,6 @@ public class UserUtils {
                 && PASSWORD.equals(user.getUserPassword().toUpperCase(Locale.ROOT))) {
             return true;
         }
-        return false;
+        throw new UserInfoException();
     }
 }

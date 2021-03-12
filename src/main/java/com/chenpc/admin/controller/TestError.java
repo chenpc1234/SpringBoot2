@@ -12,6 +12,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Slf4j
 @Controller
 public class TestError {
+
+    /**
+     * 测试数学运算异常
+     * @return 视图地址
+     */
     @GetMapping("/testError")
     private String testError(){
         int a = 0;
