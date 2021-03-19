@@ -1,13 +1,14 @@
 package com.chen.admin.controller;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.chen.admin.bean.DynamicTable;
 import com.chen.admin.service.TableService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-
-import java.util.List;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  * @author chenpc
@@ -15,6 +16,7 @@ import java.util.List;
  * @since 2021/2/25/02/25  11:01
  */
 @Controller
+@Slf4j
 public class TableController {
 
     @Autowired
@@ -25,9 +27,14 @@ public class TableController {
         return "datatables/basic_table";
     }
     @GetMapping("dynamic_table")
-    public String dynamicTable(Model model){
-        List<DynamicTable> dynamicTables = tableService.list();
-        model.addAttribute("dynamicTables",dynamicTables);
+    public String dynamicTable(@RequestParam(value = "pn",defaultValue = "1") Integer pn,  Model model){
+
+        Page<DynamicTable> dynamicTablePage = new Page<>(pn,2);
+        Page<DynamicTable> page = tableService.page(dynamicTablePage,null);
+        /*List<DynamicTable> dynamicTables = tableService.list();
+        model.addAttribute("dynamicTables",dynamicTables);*/
+
+        model.addAttribute("dynamicTablePage",page);
         return "datatables/dynamic_table";
     }
     @GetMapping("editable_table")

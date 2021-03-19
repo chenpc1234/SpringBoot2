@@ -28,8 +28,6 @@ public class IndexController {
 
     @PostMapping("/login")
     public String main(User user, HttpSession session, Model model){
-        System.out.println(user.getUserName());
-        System.out.println(user.getUserPassword());
         user = userService.queryUser(user);
         if (user!=null){
             session.setAttribute("user", user);
