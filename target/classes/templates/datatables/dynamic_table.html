@@ -110,7 +110,7 @@
                 <div class="span6">
                     <div class="dataTables_paginate paging_bootstrap pagination">
                         <ul>
-                            <li class="prev disabled"><a href="#">← 上一页</a></li>
+                            <li class="prev disabled"><a th:href="@{dynamic_table(pn=${dynamicTablePage.current -1} )}">← 上一页</a></li>
                             <li th:class="${num == dynamicTablePage.current?'active':''}" th:each="num:${#numbers.sequence(1,dynamicTablePage.pages)}">
                                 <a th:href="@{/dynamic_table(pn=${num})}">[[${num}]]</a>
                             </li>

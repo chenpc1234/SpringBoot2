@@ -27,10 +27,19 @@ spring:
           enabled: true
           config:
             drop-table-allow: false
+  #jdbc 连接配置
   jdbc:
     template:
       query-timeout: 5
-
+  #redis配置
+  redis:
+    host: 192.168.121.128
+    port: 6379
+    password: 123456
+    client-type: jedis
+  cache:
+    redis:
+      use-key-prefix: false
 #mybatis:
 #  #config-location: classpath:mybatis/mybatis-config.xml  #全局配置文件位置
 #  mapper-locations: classpath:mybatis/mapper/*.xml  #sql映射文件位置
@@ -39,3 +48,10 @@ spring:
 mybatis-plus:
   configuration:
     map-underscore-to-camel-case: true  #默认就是true 开启驼峰命名
+management:
+  endpoints:
+    enabled-by-default: true #暴露所有端点信息
+    web:
+      exposure:
+        include: '*'  #以web方式暴露
+
