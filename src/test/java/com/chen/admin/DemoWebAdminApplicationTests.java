@@ -16,6 +16,7 @@ class DemoWebAdminApplicationTests {
 
     public static void main(String[] args) {
         User u =new User();
+       // Object u = new Object();
         String s = ClassLayout.parseInstance(u).toPrintable().toString();
         System.out.println(s);
     }

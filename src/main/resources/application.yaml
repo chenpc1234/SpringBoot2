@@ -37,9 +37,14 @@ spring:
     port: 6379
     password: 123456
     client-type: jedis
+    jedis:
+      pool:
+        max-active: 10
   cache:
     redis:
       use-key-prefix: false
+
+#factories:#
 #mybatis:
 #  #config-location: classpath:mybatis/mybatis-config.xml  #全局配置文件位置
 #  mapper-locations: classpath:mybatis/mapper/*.xml  #sql映射文件位置
@@ -54,4 +59,3 @@ management:
     web:
       exposure:
         include: '*'  #以web方式暴露
-
